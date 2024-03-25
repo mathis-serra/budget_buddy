@@ -19,12 +19,11 @@ CREATE TABLE transaction(
 );
 
 
--- CREATE TABLE Utilisateur (
+-- CREATE TABLE User (
 --     id_utilisateur INT PRIMARY KEY AUTO_INCREMENT,
 --     nom VARCHAR(255),
 --     adresse VARCHAR(255),
---     email VARCHAR(255),
---     username VARCHAR(255),
+--     email VARCHAR (255) UNIQUE CHECK (REGEXP_LIKE(email, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$')),
 --     password VARCHAR(255),
 --     solde DECIMAL(10, 2)
 -- );
@@ -34,7 +33,8 @@ CREATE TABLE transaction(
 --     id_transaction INT PRIMARY KEY AUTO_INCREMENT,
 --     montant DECIMAL(10, 2),
 --     date_heure DATETIME,
---     type_transaction VARCHAR(50),
+--     motif_transaction VARCHAR(50),
+--     type_transaction boolean,
 --     compte_id INT,
 --     FOREIGN KEY (compte_id) REFERENCES CompteBancaire(id_compte)
 -- );
