@@ -1,3 +1,4 @@
+-- Active: 1711370116390@@127.0.0.1@3306@maze_bank
 CREATE DATABASE maze_bank;
 
 USE maze_bank;
