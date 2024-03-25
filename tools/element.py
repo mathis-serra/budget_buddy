@@ -5,20 +5,14 @@ class Interface:
         self.W = 1000
         self.H = 600
         self.Screen = pygame.display.set_mode((self.W, self.H))
-        pygame.display.set_caption("Discord")
+        pygame.display.set_caption("Maze Bank")
         self.clock = pygame.time.Clock()
-        self.light_grey = (188, 186, 184)
-        self.grey = (64, 68, 75)
-        self.dark_grey = (54, 57, 63)
-        self.white = (249, 249, 249)
-        self.blue = (114, 137, 218)
-        self.black = (0, 0, 0)
-        self.red = (237, 32, 71)
-        self.pur_red = (255, 0, 0)    
-        self.dark_red = (120,11,11)    
-        self.soft_black = (35,35,35)
-        self.purple = (185, 12, 211)
-        
+        self.red = (219,0,0)
+        self.black = (0,0,0)    
+        self.red_transaction = (248,0,0)
+        self.green_transaction = (82,153,26)
+        self.white = (255,255,255)       
+               
     def img(self, x, y, width, height, image_name):
         image = pygame.image.load(f'images/{image_name}.png')
         image = pygame.transform.scale(image, (width, height))
