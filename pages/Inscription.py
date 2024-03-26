@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import font
-from connection import Connexion 
+from connection import Connection 
 
 class Inscription:
     def __init__(self, root):
@@ -49,7 +49,7 @@ class Inscription:
     def go_to_connection(self):
         self.root.destroy()  # Ferme la fenêtre du menu principal
         root = tk.Tk()
-        app = Connexion(root)
+        app = Connection(root)
         root.mainloop()
 
 class PlaceholderEntry(tk.Entry):

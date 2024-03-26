@@ -1,5 +1,5 @@
 from tkinter import font
-from tool_graph.placeholderEntry import PlaceholderEntry
+import placeholderEntry as PlaceholderEntry
 import re, tkinter as tk
 
 
