@@ -1,6 +1,6 @@
 from tkinter import font
-import re
-import tkinter as tk
+from tool_graph.placeholderEntry import PlaceholderEntry
+import re, tkinter as tk
 
 
 class Connection:
