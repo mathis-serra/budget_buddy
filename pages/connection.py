@@ -1,13 +1,16 @@
 import pygame
 from database.sql_manager import SqlManager
-from 
+from tool_graph.element import Elements
 
-class Connection(SqlManager):
+class Connection(SqlManager, Elements):
     def __init__(self):
         super().__init__()
         self.email_text = ""
         self.password_text = ""
         self.active_field = {'email':'', 'password':''}
+        self.clock = pygame.time.Clock()
+        self.error_timer = 0
+        self.error_duration = 1000
 
     def handle_event(self, event):
         if event.type == pygame.KEYDOWN:
@@ -29,18 +32,24 @@ class Connection(SqlManager):
                 elif self.active_field == "password":
                     self.password_text += event.unicode
                     
-    def draw_error_message_login(self):
-        """
-        Draw error message for login.
-        """
-        if self.error_message_login:
-            self.solid_rect_radius(self.light_grey,620,20,360,55,8)
+    def draw_error_message_login(self):   
+        if self.error_email:
+            self.solid_rect_radius(self.red,620,20,360,55,8)
             self.light_rect(self.black,620,20,360,55,2)
-            self.text_align(16, self.error_message_login, self.pur_red, 796, 45)
+            self.text_align(16, self.error_message_login, self.black, 796, 45)
             self.error_timer += self.clock.tick()
             if self.error_timer >= self.error_duration:
                 self.error_message_login = None
                 self.error_timer = 0
+                
+        # elif self.error_email:
+        #     self.solid_rect_radius(self.red,620,20,360,55,8)
+        #     self.light_rect(self.black,620,20,360,55,2)
+        #     self.text_align(16, self.error_message_login, self.black, 796, 45)
+        #     self.error_timer += self.clock.tick()
+        #     if self.error_timer >= self.error_duration:
+        #         self.error_message_login = None
+        #         self.error_timer = 0
                 
     def verify_email(self, email_input):
         if email_input:

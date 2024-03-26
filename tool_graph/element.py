@@ -1,6 +1,6 @@
 import pygame
 
-class Interface:
+class Elements:
     def __init__(self):
         self.W = 1000
         self.H = 600
