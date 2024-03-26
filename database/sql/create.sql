@@ -4,15 +4,16 @@ CREATE DATABASE maze_bank;
 USE maze_bank;
 
 CREATE TABLE user(
-    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_user INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR (255),
     firstname VARCHAR (255),
     email VARCHAR (255) UNIQUE CHECK (REGEXP_LIKE(email, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$')),
-    password VARCHAR (200)
+    password VARCHAR (200),
+    solde DECIMAL(10, 2)
 );
 
 CREATE TABLE transaction(
-    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_transaction INT PRIMARY KEY AUTO_INCREMENT,
     amount INT,
     heure DATETIME DEFAULT CURRENT_TIMESTAMP,
     motif VARCHAR (255) 
