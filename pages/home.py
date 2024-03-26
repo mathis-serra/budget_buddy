@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import font
 import subprocess
 from Inscription import Inscription
-from connection import Connexion  # Importe le fichier connexion.py
+from connection import Connection  # Importe le fichier connexion.py
 
 class Menu:
     def __init__(self, root):
@@ -49,9 +49,9 @@ class Menu:
 
     def go_to_connection(self):
         self.root.destroy()  # Ferme la fenêtre du menu principal
-        root = tk.Tk()
-        app = Connexion(root)
-        root.mainloop()
+        app = Connection()
+        app.create_widgets()
+        app.run()
 
 if __name__ == "__main__":
     root = tk.Tk()
