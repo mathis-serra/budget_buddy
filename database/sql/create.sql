@@ -16,7 +16,8 @@ CREATE TABLE transaction(
     id_transaction INT PRIMARY KEY AUTO_INCREMENT,
     amount INT,
     heure DATETIME DEFAULT CURRENT_TIMESTAMP,
-    motif VARCHAR (255) 
+    reason VARCHAR (255),
+    type_transaction BOOLEAN 
 );
 
 
