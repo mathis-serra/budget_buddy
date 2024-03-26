@@ -48,9 +48,9 @@ class Inscription:
 
     def go_to_connection(self):
         self.root.destroy()  # Ferme la fenêtre du menu principal
-        root = tk.Tk()
-        app = Connection(root)
-        root.mainloop()
+        app = Connection()
+        app.create_widgets()
+        app.run()
 
 class PlaceholderEntry(tk.Entry):
     def __init__(self, master=None, placeholder="", *args, **kwargs):

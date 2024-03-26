@@ -1,9 +1,10 @@
 from tkinter import font
 import placeholderEntry as PlaceholderEntry
 import re, tkinter as tk
+# import databases.sql_manager as SqlManager
 
 
-class Connection:
+class Connection():
     def __init__(self):        
         self.error_email = ""
         self.error_password = ""
@@ -31,7 +32,7 @@ class Connection:
         self.password_entry = PlaceholderEntry(self.root, "Mot de passe", font=('Arial', 12), bg='white', fg='black')
         self.password_entry.pack(pady=5)
 
-        self.connexion_button = tk.Button(self.root, text="Se connecter", command=self.connecter, font=('Arial', 14), bg='red', fg='red', padx=20, pady=10, bd=0, activebackground='#FF5733', activeforeground='red')
+        self.connexion_button = tk.Button(self.root, text="Se connecter", command=self.button_clicked, font=('Arial', 14), bg='red', fg='red', padx=20, pady=10, bd=0, activebackground='#FF5733', activeforeground='red')
         self.connexion_button.pack(pady=10)
 
     def verify_email(self):
@@ -82,3 +83,34 @@ class Connection:
 
     def run(self):
         self.root.mainloop()
+
+class PlaceholderEntry(tk.Entry):
+    def __init__(self, master=None, placeholder="", *args, **kwargs):
+        super().__init__(master, *args, **kwargs)
+        self.placeholder = placeholder
+        self.placeholder_color = 'grey'
+        self.default_fg_color = self['fg']
+
+        self.bind("<FocusIn>", self.focused)
+        self.bind("<FocusOut>", self.focus_out)
+        self.put_placeholder()
+
+    def put_placeholder(self):
+        self.insert(0, self.placeholder)
+        self['fg'] = self.placeholder_color
+
+    def focused(self, event):
+        if self['fg'] == self.placeholder_color:
+            self.delete('0', 'end')
+            self['fg'] = self.default_fg_color
+
+    def focus_out(self, event):
+        if not self.get():
+            self.put_placeholder()
+            self['fg'] = self.placeholder_color
+
+if __name__ == "__main__":
+    
+    app = Connection()
+    app.create_widgets()
+    app.run()
