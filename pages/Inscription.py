@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import font
-from Connection import Connexion 
+from connection import Connexion 
 
 class Inscription:
     def __init__(self, root):

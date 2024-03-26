@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import font
 import subprocess
 from Inscription import Inscription
-from Connexion import Connexion  # Importe le fichier connexion.py
+from connection import Connexion  # Importe le fichier connexion.py
 
 class Menu:
     def __init__(self, root):
