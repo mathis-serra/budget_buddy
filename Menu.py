@@ -10,6 +10,8 @@ class Menu:
         self.root.title("MazeBank")
         self.root.geometry("430x600")  # Nouvelles dimensions de la fenêtre
         self.root.configure(background='#f5f5f5')
+        
+        
 
         # Redimensionnement du logo
         self.logo = tk.PhotoImage(file="logo.png").subsample(2)  # Changer le facteur de sous-échantillonnage selon votre besoin
