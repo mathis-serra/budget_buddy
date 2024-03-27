@@ -3,6 +3,7 @@ import placeholderEntry as PlaceholderEntry
 import re
 import tkinter as tk
 from databases.sql_manager import SqlManager
+from pages.Account import Account
 
 
 class Connection(SqlManager, PlaceholderEntry):
@@ -80,8 +81,8 @@ class Connection(SqlManager, PlaceholderEntry):
 
     def button_clicked(self):
         if self.verify_email() and self.verify_password():
-            # self.home.home()
-            pass
+            app = Account()
+            app.run()
         else:
             print("vous n'avez pas de compte. Inscrivez vous")
 
