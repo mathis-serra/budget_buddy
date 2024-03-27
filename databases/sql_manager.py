@@ -1,4 +1,4 @@
-from database.database import Database
+from database import Database
 
 class SqlManager(Database):
     def __init__(self):
@@ -12,7 +12,9 @@ class SqlManager(Database):
         sql = "SELECT password FROM user"
         self.fetch_all(sql, ())
     
-    
+    def insert_user(self, name, firstname, email, password):
+        sql = "INSERT INTO user (name, firstname, email, password) VALUES (%s, %s)"
+        self.execute_sql(sql, (name, firstname, email, password))
     
     
     
