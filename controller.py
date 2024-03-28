@@ -1,5 +1,6 @@
 from sql_manager import SqlManager
 
+
 class Controller:
     def __init__(self, view):
         self.view = view
