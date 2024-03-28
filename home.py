@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import font
 import subprocess
-from Inscription import Inscription
+from view.Inscription import Inscription
 from connection import Connection  # Importe le fichier connexion.py
 
 class Menu:

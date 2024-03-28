@@ -1,6 +1,6 @@
 import re, tkinter as tk
 from tkinter import font
-from controller import Controller
+from control.controller import Controller
 from placeholderEntry import *
 
 class Connection:
