@@ -1,20 +1,19 @@
 import tkinter as tk
 from tkinter import font
-import subprocess
-from Inscription import Inscription
-from connection import Connection  # Importe le fichier connexion.py
+from pages.Inscription import Inscription
+from pages.connection import Connection
 
-class Menu:
-    def __init__(self, root):
-        self.root = root
+class Home:
+    def __init__(self):
+        self.root = tk.Tk()
         self.root.title("MazeBank")
-        self.root.geometry("430x600")  # Nouvelles dimensions de la fenêtre
+        self.root.geometry("430x600")
         self.root.configure(background='#f5f5f5')
         
-        
+        self.setup_menu()
 
-        # Redimensionnement du logo
-        self.logo = tk.PhotoImage(file="logo.png").subsample(2)  # Changer le facteur de sous-échantillonnage selon votre besoin
+    def setup_menu(self):
+        self.logo = tk.PhotoImage(file="logo.png").subsample(2)
         self.logo_label = tk.Label(self.root, image=self.logo, bg='#f5f5f5')
         self.logo_label.pack(pady=20)
 
@@ -22,7 +21,6 @@ class Menu:
         self.title_label = tk.Label(self.root, text="MAZE BANK", font=self.custom_font, bg='#f5f5f5', fg='black')
         self.title_label.pack()
 
-        # Phrase écrite ligne par ligne
         message_lines = [
             "Veuillez vous inscrire pour créer un nouveau compte,",
             "ou si vous êtes déjà client, veuillez vous connecter."
@@ -32,7 +30,6 @@ class Menu:
             label = tk.Label(self.root, text=line, font=('Arial', 12), bg='#f5f5f5', fg='black')
             label.pack()
 
-        # Changement de couleur des boutons en rouge avec texte blanc
         self.inscription_button = tk.Button(self.root, text="S'inscrire", command=self.go_to_inscription, font=('Arial', 14), bg='#DB0000', fg='red', padx=20, pady=10, bd=0, activebackground='#FF5733', activeforeground='red')
         self.inscription_button.pack(pady=10)
 
@@ -40,20 +37,14 @@ class Menu:
         self.connection_button.pack(pady=10)
 
     def go_to_inscription(self):
-        # Fermer la fenêtre du menu principal
-        self.root.destroy()
-        # Ouvrir la fenêtre d'inscription
-        root = tk.Tk()
-        app = Inscription(root)
-        root.mainloop()
+        inscription_window = tk.Toplevel(self.root)
+        app = Inscription(inscription_window)
 
     def go_to_connection(self):
-        self.root.destroy()  # Ferme la fenêtre du menu principal
+        self.root.destroy()
         app = Connection()
-        app.create_widgets()
-        app.run()
+        
+    def run(self):
+        self.root.mainloop()
 
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = Menu(root)
-    root.mainloop()
+

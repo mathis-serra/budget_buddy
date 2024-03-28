@@ -1,7 +1,5 @@
 import tkinter as tk
-from tkinter import font, ttk, messagebox
-from tkcalendar import Calendar
-import matplotlib.pyplot as plt
+from tkinter import font, messagebox
 
 class Account:
     def __init__(self):
@@ -23,7 +21,7 @@ class Account:
 
         self.create_account_info()
 
-        self.separator = ttk.Separator(self.frame, orient='horizontal')
+        self.separator = tk.Frame(self.frame, height=2, width=400, bg='black')  # Utilisation de tk.Frame
         self.separator.pack(fill='x', pady=10)
 
         self.create_buttons()
@@ -75,19 +73,11 @@ class Account:
         categories = ['Alimentation', 'Logement', 'Transport', 'Loisirs', 'Autres']
         expenses = [200, 300, 150, 100, 250]
 
-        plt.figure(figsize=(6, 4))
-        plt.bar(categories, expenses, color='skyblue')
-        plt.xlabel('Catégories')
-        plt.ylabel('Dépenses (€)')
-        plt.title('Dépenses par catégorie')
-        plt.xticks(rotation=45)
-        plt.tight_layout()
-        plt.show()
-        
+        messagebox.showinfo("Graphiques", "Fonctionnalité à implémenter")
+
     def run(self):
         self.root.mainloop()
 
-if __name__ == "__main__":
-    
-    app = Account()
-    app.run()
+# if __name__ == "__main__":
+#     app = Account()
+#     app.run()
