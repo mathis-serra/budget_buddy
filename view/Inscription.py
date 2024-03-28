@@ -3,7 +3,7 @@ from tkinter import font
 from connection import Connection 
 
 class Inscription:
-    def __init__(self, root):
+    def __init__(self):
         self.root = root
         self.root.title("MazeBank - Inscription")
         self.root.geometry("430x600")  # Nouvelles dimensions de la fenêtre

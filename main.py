@@ -1,4 +1,4 @@
-from pages.home import Home
+from view.home import Home
 
 home = Home()
 home.run()

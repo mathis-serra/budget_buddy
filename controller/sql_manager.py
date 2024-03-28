@@ -1,4 +1,4 @@
-from base.database import Database
+from model.database import Database
 
 class SqlManager(Database):
     def __init__(self):
