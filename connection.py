@@ -1,7 +1,8 @@
+
 from tkinter import font
-import placeholderEntry as PlaceholderEntry
+from sql_manager import SqlManager
+from placeholderEntry import *
 import re, tkinter as tk
-# import databases.sql_manager as SqlManager
 
 
 class Connection():
