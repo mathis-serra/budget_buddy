@@ -3,10 +3,10 @@ import mysql.connector
 class Database:
     def __init__(self):
         self.base = mysql.connector.connect(
-        host = "localhost",
-        user = "root",
-        password = "dominique59",
-        database = "maze_bank",
+            host="localhost",
+            user="root",
+            password="dominique59",
+            database="maze_bank",
         )
         self.cursor = self.base.cursor()
 
@@ -17,10 +17,10 @@ class Database:
     def fetch_all(self, query, params):
         self.cursor.execute(query, params or ())
         return self.cursor.fetchall()
-    
+
     def fetch_one(self, query, params):
         self.cursor.execute(query, params or ())
         return self.cursor.fetchone()
-    
+
     def closing_connection(self):
         self.base.close()

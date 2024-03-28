@@ -1,19 +1,14 @@
-
-from tkinter import font
-from sql_manager import SqlManager
+import tkinter as tk
+from controller import Controller
 from placeholderEntry import *
-import re, tkinter as tk
 
-
-class Connection():
+class Connection:
     def __init__(self):        
         self.error_email = ""
         self.error_password = ""
         self.root = tk.Tk()
-        self.root.title("MazeBank - Inscription")
-        self.root.geometry("430x600")  # Dimensions de la fenêtre
-        self.root.configure(background='#f5f5f5')
-        
+        self.controller = Controller(self)
+
     def create_widgets(self):
         # Redimensionnement du logo
         self.logo = tk.PhotoImage(file="logo.png").subsample(2)  # Changer le facteur de sous-échantillonnage selon votre besoin
@@ -111,7 +106,6 @@ class PlaceholderEntry(tk.Entry):
             self['fg'] = self.placeholder_color
 
 if __name__ == "__main__":
-    
     app = Connection()
     app.create_widgets()
     app.run()
