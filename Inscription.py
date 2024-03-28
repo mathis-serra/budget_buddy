@@ -6,11 +6,11 @@ class Inscription:
     def __init__(self, root):
         self.root = root
         self.root.title("MazeBank - Inscription")
-        self.root.geometry("430x600")  # Nouvelles dimensions de la fenêtre
+        self.root.geometry("430x600")  
         self.root.configure(background='#f5f5f5')
 
         # Redimensionnement du logo
-        self.logo = tk.PhotoImage(file="logo.png").subsample(2)  # Changer le facteur de sous-échantillonnage selon votre besoin
+        self.logo = tk.PhotoImage(file="logo.png").subsample(2) 
         self.logo_label = tk.Label(self.root, image=self.logo, bg='#f5f5f5')
         self.logo_label.pack(pady=20)
 
@@ -47,7 +47,7 @@ class Inscription:
         pass
 
     def go_to_connection(self):
-        self.root.destroy()  # Ferme la fenêtre du menu principal
+        self.root.destroy() 
         root = tk.Tk()
         app = Connexion(root)
         root.mainloop()

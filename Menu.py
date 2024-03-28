@@ -14,7 +14,7 @@ class Menu:
         
 
         # Redimensionnement du logo
-        self.logo = tk.PhotoImage(file="logo.png").subsample(2)  # Changer le facteur de sous-échantillonnage selon votre besoin
+        self.logo = tk.PhotoImage(file="logo.png").subsample(2) 
         self.logo_label = tk.Label(self.root, image=self.logo, bg='#f5f5f5')
         self.logo_label.pack(pady=20)
 
@@ -48,10 +48,11 @@ class Menu:
         root.mainloop()
 
     def go_to_connection(self):
-        self.root.destroy()  # Ferme la fenêtre du menu principal
-        root = tk.Tk()
-        app = Connexion(root)
-        root.mainloop()
+        self.root.destroy()  # Détruire la fenêtre de connexion
+        root_interface = tk.Tk()  # Créer une nouvelle instance de Tk
+        app_interface = Connexion(root_interface)  # Créer une instance de Menu dans la même instance de Tk
+        root_interface.mainloop()
+
 
 if __name__ == "__main__":
     root = tk.Tk()

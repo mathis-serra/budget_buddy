@@ -4,7 +4,7 @@ from tkcalendar import Calendar
 import matplotlib.pyplot as plt
 import numpy as np
 
-class Menu:
+class Interface:
     def __init__(self, root):
         self.root = root
         self.root.title("MazeBank")
@@ -12,8 +12,8 @@ class Menu:
         self.root.configure(background='#f5f5f5')
 
         self.frame = tk.Frame(self.root, bg='#f5f5f5')
-        self.frame.place(relx=0.5, rely=0.3, anchor='center')
-        
+        self.frame.pack(pady=50)
+        self.frame.place(relx=0.5, rely=0.5, anchor='center')
 
         # Ajout du logo
         self.logo = tk.PhotoImage(file="logo.png").subsample(3)
@@ -159,5 +159,5 @@ class Menu:
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = Menu(root)
+    app = Interface(root)
     root.mainloop()

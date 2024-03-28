@@ -1,15 +1,18 @@
 import tkinter as tk
 from tkinter import font
+from interface import Interface
+from tkinter import messagebox
+
 
 class Connexion:
     def __init__(self, root):
         self.root = root
         self.root.title("MazeBank - Inscription")
-        self.root.geometry("430x600")  # Dimensions de la fenêtre
+        self.root.geometry("430x600") 
         self.root.configure(background='#f5f5f5')
 
         # Redimensionnement du logo
-        self.logo = tk.PhotoImage(file="logo.png").subsample(2)  # Changer le facteur de sous-échantillonnage selon votre besoin
+        self.logo = tk.PhotoImage(file="logo.png").subsample(2)  
         self.logo_label = tk.Label(self.root, image=self.logo, bg='#f5f5f5')
         self.logo_label.pack(pady=20)
 
@@ -31,10 +34,23 @@ class Connexion:
 
     def connecter(self):
         email = self.email_entry.get()
-        password = self.mdp_entry.get()  # Correction ici
-        # Vous pouvez ajouter ici le code pour vérifier les informations de connexion avec la base de données
-        print("Email :", email)
-        print("Mot de passe :", password)
+        password = self.mdp_entry.get() 
+        if self.verifier_connexion(email, password):
+                self.root.destroy()  # Détruire la fenêtre de connexion
+                root_interface = tk.Tk()  # Créer une nouvelle instance de Tk
+                app_interface = Interface(root_interface)  # Créer une instance de Menu dans la même instance de Tk
+                root_interface.mainloop()
+
+    def verifier_connexion(self, email, password):
+        # Cette méthode devrait vérifier les informations de connexion.
+        # Ici, nous simulerons une vérification réussie si l'email est "test@test.com" et le mot de passe est "password".
+        if email == "test@test.com" and password == "password":
+            return True
+        else:
+            # Si les informations de connexion ne sont pas valides, vous pouvez afficher un message d'erreur.
+            messagebox.showerror("Erreur de connexion", "Email ou mot de passe incorrect.")
+            return False
+
 
 class PlaceholderEntry(tk.Entry):
     def __init__(self, master=None, placeholder="", color='grey', *args, **kwargs):
