@@ -78,21 +78,17 @@ class Account:
 
         messagebox.showinfo("Graphiques", "Fonctionnalité à implémenter")
 
-    def run(self):
-        self.root.mainloop()
+    # def run(self):
+    #     self.root.mainloop()
+    #     plt.figure(figsize=(6, 4))
+    #     plt.bar(categories, expenses, color='skyblue')
+    #     plt.xlabel('Catégories')
+    #     plt.ylabel('Dépenses (€)')
+    #     plt.title('Dépenses par catégorie')
+    #     plt.xticks(rotation=45)
+    #     plt.tight_layout()
 
-# if __name__ == "__main__":
-#     app = Account()
-#     app.run()
-        plt.figure(figsize=(6, 4))
-        plt.bar(categories, expenses, color='skyblue')
-        plt.xlabel('Catégories')
-        plt.ylabel('Dépenses (€)')
-        plt.title('Dépenses par catégorie')
-        plt.xticks(rotation=45)
-        plt.tight_layout()
-
-        plt.show()
+    #     plt.show()
 
 if __name__ == "__main__":
     root = tk.Tk()

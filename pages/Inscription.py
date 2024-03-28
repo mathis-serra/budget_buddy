@@ -2,7 +2,7 @@
 import tkinter as tk
 from tkinter import font
 from pages.connection import Connection
-from databases.sql_manager import SqlManager
+from base.sql_manager import SqlManager
 # from databases.database import Database 
 
 
