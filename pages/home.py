@@ -1,8 +1,8 @@
 import tkinter as tk
 from tkinter import font
 import subprocess
-from Inscription import Inscription
-from connection import Connection  # Importe le fichier connexion.py
+from pages.Inscription import Inscription
+from pages.connection import Connection  # Importe le fichier connexion.py
 
 class Menu:
     def __init__(self, root):

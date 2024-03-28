@@ -1,12 +1,16 @@
+
 import tkinter as tk
 from tkinter import font
-from connection import Connection 
+from pages.connection import Connection
+from databases.sql_manager import SqlManager
+# from databases.database import Database 
+
 
 class Inscription:
     def __init__(self, root):
         self.root = root
         self.root.title("MazeBank - Inscription")
-        self.root.geometry("430x600")  # Nouvelles dimensions de la fenêtre
+        self.root.geometry("430x600")  
         self.root.configure(background='#f5f5f5')
 
         # Redimensionnement du logo
@@ -32,22 +36,42 @@ class Inscription:
         self.email_entry = PlaceholderEntry(self.root, "Email", font=('Arial', 12), bg='white', fg='black')
         self.email_entry.pack(pady=5)
 
-        self.mdp_entry = PlaceholderEntry(self.root, "Mot de passe", font=('Arial', 12), bg='white', fg='black')
+        self.mdp_entry = PlaceholderEntry(self.root, "Mot de passe", font=('Arial', 12), bg='white', fg='black', show='*')
         self.mdp_entry.pack(pady=5)
 
         # Boutons "S'inscrire" et "Se connecter"
-        self.inscription_button = tk.Button(self.root, text="S'inscrire", command=self.inscrire, font=('Arial', 14), bg='white', fg='#DB0000', padx=20, pady=10, bd=0, activebackground='#FF5733', activeforeground='white')
+        self.inscription_button = tk.Button(self.root, text="S'inscrire", command=self.register, font=('Arial', 14), bg='white', fg='#DB0000', padx=20, pady=10, bd=0, activebackground='#FF5733', activeforeground='white')
         self.inscription_button.pack(pady=10)
 
         self.connection_button = tk.Button(self.root, text="Se connecter", command=self.go_to_connection, font=('Arial', 14), bg='#DB0000', fg='#DB0000', padx=20, pady=10, bd=0, activebackground='#FF5733', activeforeground='white')
         self.connection_button.pack(pady=10)
 
-    def inscrire(self):
-        # Fonction pour traiter l'inscription (à implémenter plus tard)
-        pass
+    def register(self):
+        # Récupérer les valeurs des champs d'entrée
+        firstname = self.prenom_entry.get()
+        name = self.nom_entry.get()
+        email = self.email_entry.get()
+        password = self.mdp_entry.get()
 
+        try:
+            # Vérifier si l'adresse e-mail se termine par '@gmail.com'
+            if not email.endswith("@gmail.com"):
+                print("L'adresse e-mail doit se terminer par '@gmail.com'")
+                return
+
+            # Insérer l'utilisateur dans la base de données
+            sql_manager = SqlManager()
+            if sql_manager.insert_user(name, firstname, email, password):
+                print("Utilisateur enregistré avec succès")
+            else:
+                print("Utilisateur enregistré avec succès")
+        except Exception as e:
+            print("Erreur lors de l'enregistrement de l'utilisateur:", e)
+
+
+        
     def go_to_connection(self):
-        self.root.destroy()  # Ferme la fenêtre du menu principal
+        self.root.destroy()  #shot down the main window
         app = Connection()
         app.create_widgets()
         app.run()

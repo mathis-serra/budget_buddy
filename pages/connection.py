@@ -1,5 +1,5 @@
 from tkinter import font
-import placeholderEntry as PlaceholderEntry
+import pages.placeholderEntry as PlaceholderEntry
 import re, tkinter as tk
 # import databases.sql_manager as SqlManager
 

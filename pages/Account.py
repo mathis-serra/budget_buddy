@@ -4,7 +4,7 @@ from tkcalendar import Calendar
 import matplotlib.pyplot as plt
 import numpy as np
 
-class Menu:
+class Account:
     def __init__(self, root):
         self.root = root
         self.root.title("MazeBank")
@@ -159,5 +159,5 @@ class Menu:
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = Menu(root)
+    app = Account(root)
     root.mainloop()
