@@ -5,7 +5,7 @@ from view.Inscription import Inscription
 from view.connection import Connection  # Importe le fichier connexion.py
 from control.controller import Controller
 
-class Menu:
+class Home:
     def __init__(self, root):
         self.root = root
         self.root.title("MazeBank")
@@ -51,11 +51,13 @@ class Menu:
 
     def go_to_connection(self):
         self.root.destroy()  # Ferme la fenêtre du menu principal
-        app = Connection()
+        root = tk.Tk()
+        controller = Controller(None)  # Controller should be instantiated before Inscription
+        app = Connection(root, controller)
         app.create_widgets()
         app.run()
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = Menu(root)
+    app = Home(root)
     root.mainloop()
