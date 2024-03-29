@@ -1,17 +1,16 @@
 import tkinter as tk
-from tkinter import font, Label, Button, messagebox
+from tkinter import font, Label
 from view.placeholderEntry import PlaceholderEntry
-from controller.con_user import Con_user
 
 class Connection(PlaceholderEntry):
     def __init__(self):
         super().__init__()
         self.root = tk.Tk()
-        self.con_user = Con_user()
-        self.root.title("MazeBank - Inscription")
+        self.root.title("MazeBank - Connexion")
         self.root.geometry("430x600")
         self.root.configure(background='#f5f5f5')
         self.create_widgets()
+
 
     def create_widgets(self):
         self.custom_font = font.Font(family="Helvetica", size=24, weight="bold")
@@ -25,13 +24,8 @@ class Connection(PlaceholderEntry):
         self.email_entry.pack(pady=5)
 
         self.password_entry = PlaceholderEntry(self.root, "Mot de passe", font=('Arial', 12), bg='white', fg='black')
-        self.password_entry.pack(pady=5)
-
-        self.connexion_button = Button(self.root, text="Se connecter", command=self.con_user.button_clicked, font=('Arial', 14), bg='red', fg='white', padx=20, pady=10, bd=0, activebackground='#FF5733', activeforeground='white')
-        self.connexion_button.pack(pady=10)
+        self.password_entry.pack(pady=5)        
         
-    def run(self):
+    def run_connection(self):
+
         self.root.mainloop()
-        
-
-    

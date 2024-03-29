@@ -3,21 +3,17 @@ from tkinter import font
 from view.Inscription import Inscription
 from view.connection import Connection
 
-class Home:
+class Home(Connection, Inscription):
     def __init__(self):
         self.root = tk.Tk()
-        self.connec = Connection()
-        self.register = Inscription()
+        self.connect = Connection.__init__(self)
+        self.regis = Inscription.__init__(self)
         self.root.title("MazeBank")
         self.root.geometry("430x600")
         self.root.configure(background='#f5f5f5')        
         self.setup_menu()
 
     def setup_menu(self):
-        self.logo = tk.PhotoImage(file="logo.png").subsample(2)
-        self.logo_label = tk.Label(self.root, image=self.logo, bg='#f5f5f5')
-        self.logo_label.pack(pady=20)
-
         self.custom_font = font.Font(family="Helvetica", size=24, weight="bold")
         self.title_label = tk.Label(self.root, text="MAZE BANK", font=self.custom_font, bg='#f5f5f5', fg='black')
         self.title_label.pack()
@@ -31,13 +27,12 @@ class Home:
             label = tk.Label(self.root, text=line, font=('Arial', 12), bg='#f5f5f5', fg='black')
             label.pack()
 
-        self.inscription_button = tk.Button(self.root, text="S'inscrire", command=self.register.root.mainloop(), font=('Arial', 14), bg='#DB0000', fg='red', padx=20, pady=10, bd=0, activebackground='#FF5733', activeforeground='red')
+        self.inscription_button = tk.Button(self.root, text="S'inscrire", command=self.regis, font=('Arial', 14), bg='#DB0000', fg='red', padx=20, pady=10, bd=0, activebackground='#FF5733', activeforeground='red')
         self.inscription_button.pack(pady=10)
 
-        self.connection_button = tk.Button(self.root, text="Se connecter", command=self.connec.run(), font=('Arial', 14), bg='#DB0000', fg='red', padx=20, pady=10, bd=0, activebackground='#FF5733', activeforeground='red')
+        self.connection_button = tk.Button(self.root, text="Se connecter", command=self.connect, font=('Arial', 14), bg='#DB0000', fg='red', padx=20, pady=10, bd=0, activebackground='#FF5733', activeforeground='red')
         self.connection_button.pack(pady=10)    
         
-    def run(self):
-        self.root.mainloop()
-
-
+    def run_home(self):
+        # self.root.destroy()
+        self.root.mainloop() 

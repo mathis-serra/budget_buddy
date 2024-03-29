@@ -1,5 +1,5 @@
 import re
-from tkinter import messagebox
+from tkinter import messagebox, Button
 from view.connection import Connection
 from view.Account import Account
 from controller.sql_manager import SqlManager
@@ -10,6 +10,9 @@ class Con_user(SqlManager):
         self.connection = Connection()
         self.email_user = self.connection.email_entry
         self.password_user = self.connection.password_entry
+        
+        self.connexion_button = Button(self.connection.root, text="Se connecter", command=self.button_clicked, font=('Arial', 14), bg='red', fg='white', padx=20, pady=10, bd=0, activebackground='#FF5733', activeforeground='white')
+        self.connexion_button.pack(pady=10)
 
     def verify_email(self, email_input):
         if email_input:
@@ -53,5 +56,4 @@ class Con_user(SqlManager):
         else:
             messagebox.showerror("Erreur", "Vous n'avez pas de compte. Inscrivez-vous")
 
-    def run(self):
-        self.connection.root.mainloop()
+    

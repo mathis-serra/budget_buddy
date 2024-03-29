@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import font, messagebox
+from controller.user_account import User_Account
 
 class Account:
     def __init__(self):
@@ -20,11 +21,12 @@ class Account:
         self.title_label.pack(pady=2)
 
         self.create_account_info()
+        User_Account.create_buttons()
+
 
         self.separator = tk.Frame(self.frame, height=2, width=400, bg='black')  # Utilisation de tk.Frame
         self.separator.pack(fill='x', pady=10)
 
-        self.create_buttons()
 
     def create_account_info(self):
         self.account_title = tk.Label(self.frame, text="Compte individuel", font=('Helvetica', 16, 'bold'), bg='#f5f5f5', fg='black')

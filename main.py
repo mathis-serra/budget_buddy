@@ -1,4 +1,4 @@
 from view.home import Home
 
 home = Home()
-home.run()
+home.run_home()
