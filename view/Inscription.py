@@ -11,6 +11,7 @@ class Inscription:
     def __init__(self, root, controller):
         self.root = root
         self.controller = controller
+        controller = Controller(None)  # Controller should be instantiated before Inscription
         self.initialize_ui()
 
     def initialize_ui(self):
@@ -40,7 +41,7 @@ class Inscription:
         self.email_entry = PlaceholderEntry(self.root, "Email", font=('Arial', 12), bg='white', fg='black')
         self.email_entry.pack(pady=5)
 
-        self.mdp_entry = PlaceholderEntry(self.root, "Mot de passe", font=('Arial', 12), bg='white', fg='black', show='*')
+        self.mdp_entry = PlaceholderEntry(self.root, "", font=('Arial', 12), bg='white', fg='black', show='*')
         self.mdp_entry.pack(pady=5)
 
 
@@ -59,38 +60,14 @@ class Inscription:
         self.controller.register_user(name, firstname, email, password)
 
 
-
-
     def go_to_connection(self):
         self.root.destroy()  #shot down the main window
-        app = Connection()
+        root = tk.Tk()
+        controller = Controller(None)  # Controller should be instantiated before Inscription
+        app = Connection(root, controller)
         app.create_widgets()
-        app.run()
+        app.run_connection()
         
-# class PlaceholderEntry(tk.Entry):
-#     def __init__(self, master=None, placeholder="", *args, **kwargs):
-#         super().__init__(master, *args, **kwargs)
-#         self.placeholder = placeholder
-#         self.placeholder_color = 'grey'
-#         self.default_fg_color = self['fg']
-#         self.bind("<FocusIn>", self.focused)
-#         self.bind("<FocusOut>", self.focus_out)
-#         self.put_placeholder()
-
-#     def put_placeholder(self):
-#         self.insert(0, self.placeholder)
-#         self['fg'] = self.placeholder_color
-
-#     def focused(self, event):
-#         if self['fg'] == self.placeholder_color:
-#             self.delete('0', 'end')
-#             self['fg'] = self.default_fg_color
-
-#     def focus_out(self, event):
-#         if not self.get():
-#             self.put_placeholder()
-#             self['fg'] = self.placeholder_color
-
 if __name__ == "__main__":
     root = tk.Tk()
     controller = Controller(None)  # Controller should be instantiated before Inscription
