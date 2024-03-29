@@ -1,4 +1,4 @@
-from database import Database
+from modeles.database import Database
 
 class SqlManager(Database):
     def __init__(self):

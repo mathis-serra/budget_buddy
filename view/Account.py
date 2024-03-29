@@ -16,7 +16,7 @@ class Menu:
         
 
         # Ajout du logo
-        self.logo = tk.PhotoImage(file="logo.png").subsample(3)
+        self.logo = tk.PhotoImage(file="assets/logo.png").subsample(3)
         self.logo_label = tk.Label(self.frame, image=self.logo, bg='#f5f5f5')
         self.logo_label.pack(pady=5)
 

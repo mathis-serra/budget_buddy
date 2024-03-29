@@ -2,7 +2,8 @@ import tkinter as tk
 from tkinter import font
 import subprocess
 from view.Inscription import Inscription
-from connection import Connection  # Importe le fichier connexion.py
+from view.connection import Connection  # Importe le fichier connexion.py
+from control.controller import Controller
 
 class Menu:
     def __init__(self, root):
@@ -14,7 +15,7 @@ class Menu:
         
 
         # Redimensionnement du logo
-        self.logo = tk.PhotoImage(file="logo.png").subsample(2)  # Changer le facteur de sous-échantillonnage selon votre besoin
+        self.logo = tk.PhotoImage(file="assets/logo.png").subsample(2)  # Changer le facteur de sous-échantillonnage selon votre besoin
         self.logo_label = tk.Label(self.root, image=self.logo, bg='#f5f5f5')
         self.logo_label.pack(pady=20)
 
@@ -44,7 +45,8 @@ class Menu:
         self.root.destroy()
         # Ouvrir la fenêtre d'inscription
         root = tk.Tk()
-        app = Inscription(root)
+        controller = Controller(None)  # Controller should be instantiated before Inscription
+        app = Inscription(root, controller)
         root.mainloop()
 
     def go_to_connection(self):

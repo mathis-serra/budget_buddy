@@ -3,7 +3,8 @@
 import tkinter as tk
 from tkinter import font
 from control.controller import Controller
-from connection import Connection
+from view.connection import Connection
+from view.placeholderEntry import PlaceholderEntry
 
 
 class Inscription:
@@ -18,10 +19,9 @@ class Inscription:
         self.root.configure(background='#f5f5f5')
 
     
-        self.logo = tk.PhotoImage(file="logo.png").subsample(2)  
+        self.logo = tk.PhotoImage(file="assets/logo.png").subsample(2)  
         self.logo_label = tk.Label(self.root, image=self.logo, bg='#f5f5f5')
         self.logo_label.pack(pady=20)
-
         self.custom_font = font.Font(family="Helvetica", size=24, weight="bold")
         self.title_label = tk.Label(self.root, text="MAZE BANK", font=self.custom_font, bg='#f5f5f5', fg='black')
         self.title_label.pack()
@@ -67,27 +67,32 @@ class Inscription:
         app.create_widgets()
         app.run()
         
-class PlaceholderEntry(tk.Entry):
-    def __init__(self, master=None, placeholder="", *args, **kwargs):
-        super().__init__(master, *args, **kwargs)
-        self.placeholder = placeholder
-        self.placeholder_color = 'grey'
-        self.default_fg_color = self['fg']
-        self.bind("<FocusIn>", self.focused)
-        self.bind("<FocusOut>", self.focus_out)
-        self.put_placeholder()
+# class PlaceholderEntry(tk.Entry):
+#     def __init__(self, master=None, placeholder="", *args, **kwargs):
+#         super().__init__(master, *args, **kwargs)
+#         self.placeholder = placeholder
+#         self.placeholder_color = 'grey'
+#         self.default_fg_color = self['fg']
+#         self.bind("<FocusIn>", self.focused)
+#         self.bind("<FocusOut>", self.focus_out)
+#         self.put_placeholder()
 
-    def put_placeholder(self):
-        self.insert(0, self.placeholder)
-        self['fg'] = self.placeholder_color
+#     def put_placeholder(self):
+#         self.insert(0, self.placeholder)
+#         self['fg'] = self.placeholder_color
 
-    def focused(self, event):
-        if self['fg'] == self.placeholder_color:
-            self.delete('0', 'end')
-            self['fg'] = self.default_fg_color
+#     def focused(self, event):
+#         if self['fg'] == self.placeholder_color:
+#             self.delete('0', 'end')
+#             self['fg'] = self.default_fg_color
 
-    def focus_out(self, event):
-        if not self.get():
-            self.put_placeholder()
-            self['fg'] = self.placeholder_color
+#     def focus_out(self, event):
+#         if not self.get():
+#             self.put_placeholder()
+#             self['fg'] = self.placeholder_color
 
+if __name__ == "__main__":
+    root = tk.Tk()
+    controller = Controller(None)  # Controller should be instantiated before Inscription
+    app = Inscription(root, controller)
+    root.mainloop()
