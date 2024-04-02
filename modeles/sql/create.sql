@@ -20,6 +20,9 @@ CREATE TABLE transaction(
     type_transaction BOOLEAN 
 );
 
+INSERT INTO user(solde)
+VALUES(500);
+
 
 -- CREATE TABLE User (
 --     id_utilisateur INT PRIMARY KEY AUTO_INCREMENT,
