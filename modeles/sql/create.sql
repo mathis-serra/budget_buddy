@@ -20,8 +20,8 @@ CREATE TABLE transaction(
     type_transaction BOOLEAN 
 );
 
-INSERT INTO user(solde)
-VALUES(500);
+
+
 
 
 -- CREATE TABLE User (
