@@ -30,7 +30,8 @@ class Controller:
             print(user)
     
     def get_balance(self, id_user):
-        return self.model.retrieve_balance(id_user)
+        balance = self.model.retrieve_balance(id_user)
+        return balance[0] if balance else 0
     
     def update_balance(self, id_user, amount):
         self.model.add_balance(id_user, amount)

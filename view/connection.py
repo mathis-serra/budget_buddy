@@ -27,7 +27,7 @@ class Connection:
         self.connexion_title.pack(pady=10)
         self.email_entry = PlaceholderEntry(self.root, "Email", font=('Arial', 12), bg='white', fg='black')
         self.email_entry.pack(pady=5)
-        self.password_entry = PlaceholderEntry(self.root, "Mot de passe", font=('Arial', 12), bg='white', fg='black')
+        self.password_entry = PlaceholderEntry(self.root, "Mot de passe", font=('Arial', 12), bg='white', fg='black', show='*')
         self.password_entry.pack(pady=5)
         self.connexion_button = Button(self.root, text="Se connecter", command=self.login, font=('Arial', 14), bg='red', fg='white', padx=20, pady=10, bd=0, activebackground='#FF5733', activeforeground='white')
         self.connexion_button.pack(pady=10)
