@@ -66,5 +66,5 @@ class Inscription:
         controller = Controller(None)  # Controller should be instantiated before Inscription
         app = Connection(root, controller)
         # app.create_widgets()
-        root.run_connection()
+        
         

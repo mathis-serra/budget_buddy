@@ -44,10 +44,10 @@ class Connection:
         else:
             messagebox.showerror("Erreur de connexion", "Adresse e-mail ou mot de passe incorrect.")
 
-    def run_connection():
-        root = tk.Tk()
-        controller = Controller(None)  
-        connection = Connection(root, controller)
-        connection.run_connection()
+def run_connection(self):
+    root = tk.Tk()
+    controller = Controller(None)  
+    connection = Connection(root, controller)
+    connection.run_connection()
 
 

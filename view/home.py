@@ -54,6 +54,6 @@ class Home:
         root = tk.Tk()
         controller = Controller(None)  
         app = Connection(root, controller)
-        app.run_connection()
+        
 
 
