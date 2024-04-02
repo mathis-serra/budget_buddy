@@ -1,6 +1,7 @@
 # sql_manager.py
 
 from modeles.database import Database
+from argon2 import PasswordHasher
 import bcrypt
 
 class SqlManager(Database):
@@ -21,17 +22,19 @@ class SqlManager(Database):
         return {'firstname': user_info[2], 'name': user_info[1]} if user_info else None
     
     def insert_user(self, name, firstname, email, password):
-        
-        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+        ph = PasswordHasher()
+        hashed_password = ph.hash(password)
         sql = "INSERT INTO user (name, firstname, email, password, solde) VALUES (%s, %s, %s, %s, 0)"
         self.execute_sql(sql, (name, firstname, email, hashed_password))
     
     def verify_user(self, email, password):
+        ph = PasswordHasher()
         sql = "SELECT * FROM user WHERE email = %s"
         user_info = self.fetch_one(sql, (email,))
         if user_info:
-            # Vérification du mot de passe haché
-            if bcrypt.checkpw(password.encode('utf-8'), user_info[3].encode('utf-8')):
+            print(user_info[3])
+
+            if ph.verify(user_info[4], password):
                 return {'firstname': user_info[2], 'name': user_info[1], 'id': user_info[0]}
         return None
 
