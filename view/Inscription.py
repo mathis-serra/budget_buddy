@@ -65,8 +65,8 @@ class Inscription:
         root = tk.Tk()
         controller = Controller(None)  # Controller should be instantiated before Inscription
         app = Connection(root, controller)
-        app.create_widgets()
-        app.run_connection()
+        # app.create_widgets()
+        root.run_connection()
         
 if __name__ == "__main__":
     root = tk.Tk()

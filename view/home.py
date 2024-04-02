@@ -47,15 +47,15 @@ class Home:
         root = tk.Tk()
         controller = Controller(None)  # Controller should be instantiated before Inscription
         app = Inscription(root, controller)
-        root.mainloop()
+        app.mainloop()
 
     def go_to_connection(self):
         self.root.destroy()  # Ferme la fenêtre du menu principal
         root = tk.Tk()
         controller = Controller(None)  # Controller should be instantiated before Inscription
         app = Connection(root, controller)
-        app.create_widgets()
-        app.run()
+        # app.create_widgets()
+        root.run()
 
 if __name__ == "__main__":
     root = tk.Tk()

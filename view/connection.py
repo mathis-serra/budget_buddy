@@ -18,6 +18,9 @@ class Connection(PlaceholderEntry):
         self.root.geometry("430x600")
         self.root.configure(background='#f5f5f5')
 
+        self.logo = tk.PhotoImage(file="assets/logo.png").subsample(2)  
+        self.logo_label = tk.Label(self.root, image=self.logo, bg='#f5f5f5')
+        self.logo_label.pack(pady=20)
         self.custom_font = font.Font(family="Helvetica", size=24, weight="bold")
         self.title_label = tk.Label(self.root, text="MAZE BANK", font=self.custom_font, bg='#f5f5f5', fg='black')
         self.title_label.pack()
