@@ -16,9 +16,15 @@ class Controller:
             print("Utilisateur enregistré avec succès")
 
     def login_user(self, email, password):
-        if self.model.verify_user(email, password):
+        user_info = self.model.verify_user(email, password)
+        if user_info:
             print("Connexion réussie")
-            return True
+            return user_info
         else:
             print("Connexion échouée")
-            return False
+            return None
+        
+    def display_users(self):
+        users = self.model.retrieve_users()
+        for user in users:
+            print(user)

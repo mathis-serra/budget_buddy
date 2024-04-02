@@ -3,12 +3,16 @@ from tkinter import font, ttk, messagebox
 from tkcalendar import Calendar
 import matplotlib.pyplot as plt
 import numpy as np
+from control.controller import Controller   
 
 class Menu:
-    def __init__(self, root):
+    
+    def __init__(self, root, user_info):
         self.root = root
+        self.user_info = user_info
+        self.controller = Controller(None)  # Initialize controller for further use
         self.root.title("MazeBank")
-        self.root.geometry("430x600")  # Changement des dimensions de la fenêtre
+        self.root.geometry("430x600")  # Change window dimensions
         self.root.configure(background='#f5f5f5')
 
         self.frame = tk.Frame(self.root, bg='#f5f5f5')
@@ -32,8 +36,7 @@ class Menu:
         self.account_number = tk.Label(self.frame, text="Numéro de compte : 12345678", font=('Arial', 12), bg='#f5f5f5', fg='black')
         self.account_number.pack(pady=5)
 
-        # Ajout du titulaire du compte
-        self.account_holder = tk.Label(self.frame, text="Titulaire(s): Nom Prénom", font=('Arial', 16), bg='#f5f5f5', fg='black')
+        self.account_holder = tk.Label(self.frame, text=f"Titulaire(s): {self.user_info['firstname']} {self.user_info['name']}", font=('Arial', 16), bg='#f5f5f5', fg='black')
         self.account_holder.pack(pady=5, anchor='w')
 
         # Ajout du séparateur
@@ -69,8 +72,6 @@ class Menu:
         messagebox.showinfo("Solde du compte", f"Votre solde actuel est de : {balance} €")
 
     def get_balance(self):
-        # Simulation de récupération du solde depuis la base de données
-        # Pour cet exemple, nous allons simplement retourner un solde fictif
         return 1000
 
     def toggle_criteria(self):

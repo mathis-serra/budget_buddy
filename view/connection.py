@@ -1,7 +1,7 @@
 # connection.py
 
 import tkinter as tk
-from tkinter import font, Label, Button
+from tkinter import font, Label, Button, messagebox
 from view.placeholderEntry import PlaceholderEntry
 from control.controller import Controller
 from view.Account import Menu
@@ -43,8 +43,11 @@ class Connection(PlaceholderEntry):
     def login(self):
         email = self.email_entry.get()
         password = self.password_entry.get()
-        if self.controller.login_user(email, password):
+        user_info = self.controller.login_user(email, password)
+        if user_info:
             self.root.destroy()
             root = tk.Tk()
-            app = Menu(root)
+            app = Menu(root, user_info)
             root.mainloop()
+        else:
+            messagebox.showerror("Erreur de connexion", "Adresse e-mail ou mot de passe incorrect.")
