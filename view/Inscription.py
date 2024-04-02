@@ -51,7 +51,7 @@ class Inscription:
         self.connection_button = tk.Button(self.root, text="Se connecter", command=self.go_to_connection, font=('Arial', 14), bg='#DB0000', fg='#DB0000', padx=20, pady=10, bd=0, activebackground='#FF5733', activeforeground='white')
         self.connection_button.pack(pady=10)
     
-    
+    # Register method to create a new user
     def register(self):
         firstname = self.prenom_entry.get()
         name = self.nom_entry.get()
@@ -59,7 +59,7 @@ class Inscription:
         password = self.mdp_entry.get()
         self.controller.register_user(name, firstname, email, password)
 
-
+    # Method to go to the connection page
     def go_to_connection(self):
         self.root.destroy()  #shot down the main window
         root = tk.Tk()

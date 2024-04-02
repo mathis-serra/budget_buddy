@@ -31,7 +31,7 @@ class Connection:
         self.password_entry.pack(pady=5)
         self.connexion_button = Button(self.root, text="Se connecter", command=self.login, font=('Arial', 14), bg='red', fg='white', padx=20, pady=10, bd=0, activebackground='#FF5733', activeforeground='white')
         self.connexion_button.pack(pady=10)
-        
+    # Login method to connect the user
     def login(self):
         email = self.email_entry.get()
         password = self.password_entry.get()
@@ -44,10 +44,5 @@ class Connection:
         else:
             messagebox.showerror("Erreur de connexion", "Adresse e-mail ou mot de passe incorrect.")
 
-def run_connection(self):
-    root = tk.Tk()
-    controller = Controller(None)  
-    connection = Connection(root, controller)
-    connection.run_connection()
 
 
