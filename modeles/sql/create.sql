@@ -21,6 +21,9 @@ CREATE TABLE transaction(
 );
 
 
+
+
+
 -- CREATE TABLE User (
 --     id_utilisateur INT PRIMARY KEY AUTO_INCREMENT,
 --     nom VARCHAR(255),
