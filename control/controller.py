@@ -28,3 +28,10 @@ class Controller:
         users = self.model.retrieve_users()
         for user in users:
             print(user)
+    
+    def get_balance(self, id_user):
+        return self.model.retrieve_balance(id_user)
+    
+    def update_balance(self, id_user, amount):
+        self.model.add_balance(id_user, amount)
+        print("Solde mis à jour")

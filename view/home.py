@@ -41,18 +41,18 @@ class Home:
         self.connection_button.pack(pady=10)
 
     def go_to_inscription(self):
-        # Fermer la fenêtre du menu principal
+        
         self.root.destroy()
-        # Ouvrir la fenêtre d'inscription
+       
         root = tk.Tk()
-        controller = Controller(None)  # Controller should be instantiated before Inscription
+        controller = Controller(None)  
         app = Inscription(root, controller)
         app.mainloop()
 
     def go_to_connection(self):
-        self.root.destroy()  # Ferme la fenêtre du menu principal
+        self.root.destroy()  
         root = tk.Tk()
-        controller = Controller(None)  # Controller should be instantiated before Inscription
+        controller = Controller(None)  
         app = Connection(root, controller)
         app.run_connection()
 

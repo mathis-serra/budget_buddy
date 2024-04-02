@@ -26,4 +26,14 @@ class SqlManager(Database):
     def verify_user(self, email, password):
         sql = "SELECT * FROM user WHERE email = %s AND password = %s"
         user_info = self.fetch_one(sql, (email, password))
-        return {'firstname': user_info[2], 'name': user_info[1]} if user_info else None
+        return {'firstname': user_info[2], 'name': user_info[1], 'id': user_info[0]} if user_info else None
+    
+    
+    def add_balance(self, id_user, amount):
+        sql = "UPDATE user SET solde = solde + %s WHERE id_user = %s"
+        self.execute_sql(sql, (amount, id_user))
+        
+    def retrieve_balance(self, solde):
+        sql = "SELECT solde FROM user WHERE id_user = %s"
+        return self.fetch_one(sql, (solde,))
+
