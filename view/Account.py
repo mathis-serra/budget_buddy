@@ -13,7 +13,7 @@ class Menu:
         
     def create_widgets(self):
         self.root.title("MazeBank")
-        self.root.geometry("430x600")  
+        self.root.geometry("430x800")  
         self.root.configure(background='#f5f5f5')
 
         self.logo = tk.PhotoImage(file="assets/logo.png").subsample(3)
@@ -72,7 +72,9 @@ class Menu:
             messagebox.showerror("Solde insuffisant", "Vous n'avez pas assez d'argent sur votre compte.")
         else:
             self.controller.update_balance(self.user_info['id'], -amount)
-            self.transactions.append(f"Retrait: -{amount} €")  # Ajoute la transaction à la liste
+            self.transactions.append(f"Retrait: -{amount} €")
+            self.transaction_text.tag_configure("red", foreground="red")
+            self.transaction_text.insert(tk.END, f"Retrait: -{amount} €", "red") 
             self.update_transaction_text()
             balance = self.controller.get_balance(self.user_info['id'])
             self.account_balance.config(text=f"Solde: {balance} €")
@@ -84,8 +86,4 @@ class Menu:
             self.transaction_text.insert(tk.END, transaction + "\n")  # Ajoute chaque transaction à la zone de texte
 
 # Exemple d'utilisation
-if __name__ == "__main__":
-    user_info = {'id': 123, 'firstname': 'John', 'name': 'Doe'}
-    root = tk.Tk()
-    menu = Menu(root, user_info)
-    root.mainloop()
+# 

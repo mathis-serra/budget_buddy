@@ -16,7 +16,7 @@ class Inscription:
 
     def initialize_ui(self):
         self.root.title("MazeBank - Inscription")
-        self.root.geometry("430x600")  
+        self.root.geometry("430x800")  
         self.root.configure(background='#f5f5f5')
 
     

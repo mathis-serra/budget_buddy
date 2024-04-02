@@ -9,7 +9,7 @@ class Home:
     def __init__(self, root):
         self.root = root
         self.root.title("MazeBank")
-        self.root.geometry("430x600")  # Nouvelles dimensions de la fenêtre
+        self.root.geometry("430x800")  # Nouvelles dimensions de la fenêtre
         self.root.configure(background='#f5f5f5')
         
         

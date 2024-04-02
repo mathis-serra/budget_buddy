@@ -12,7 +12,7 @@ class Connection:
 
     def create_widgets(self):
         self.root.title("MazeBank - Connexion")
-        self.root.geometry("430x600")
+        self.root.geometry("430x800")
         self.root.configure(background='#f5f5f5')
 
         # Logo et titre
