@@ -34,3 +34,14 @@ class Controller:
     def update_balance(self, id_user, amount):
         self.model.add_balance(id_user, amount)
         print("Solde mis à jour")
+    
+    def transfer(self, id_user, receiver_id, amount):
+        sender_balance = self.model.retrieve_balance(id_user)
+        if sender_balance[0] < amount:
+            print("Solde insuffisant pour effectuer le virement.")
+            return False
+        else:
+            self.model.add_balance(id_user, -amount)  
+            self.model.add_balance(receiver_id, amount)  
+            print("Virement effectué avec succès.")
+            return True

@@ -40,11 +40,6 @@ class Menu:
         self.account_balance.pack(pady=5)
         
         # Add a label for the transactions
-        self.transaction_label = tk.Label(self.root, text="Transactions:", font=('Arial', 16, 'bold'), bg='#f5f5f5', fg='black')
-        self.transaction_label.pack(pady=10)
-
-        self.transaction_text = tk.Text(self.root, width=40, height=10, font=('Arial', 12))
-        self.transaction_text.pack(pady=5)
 
         # Add an imput field to enter the amount to deposit
         self.deposit_amount_entry = tk.Entry(self.root, font=('Arial', 12))
@@ -56,6 +51,24 @@ class Menu:
         
         self.withdraw_button = tk.Button(self.root, text="Retirer", command=self.withdraw, font=('Arial', 14), bg='#f44336', fg='red', padx=20, pady=10, bd=0, activebackground='#f44336', activeforeground='red')
         self.withdraw_button.pack(pady=10)
+        
+        
+        self.receiver_id = tk.Entry(self.root, font=('Arial', 12))
+        self.receiver_id.pack(pady=5)
+        
+        self.amount = tk.Entry(self.root, font=('Arial', 12))
+        self.amount.pack(pady=5)
+        
+
+        self.transfer_button = tk.Button(self.root, text="Virement", command=self.transfer, font=('Arial', 14), bg='#2196F3', fg='red', padx=20, pady=10, bd=0, activebackground='#2196F3', activeforeground='red')
+        self.transfer_button.pack(pady=10)
+
+        self.transaction_label = tk.Label(self.root, text="Transactions:", font=('Arial', 16, 'bold'), bg='#f5f5f5', fg='black')
+        self.transaction_label.pack(pady=10)
+
+        self.transaction_text = tk.Text(self.root, width=40, height=10, font=('Arial', 12))
+        self.transaction_text.pack(pady=5)
+        
 
     #Deposit method to add money to the account
     def deposit(self):
@@ -71,7 +84,11 @@ class Menu:
 
     #Withdraw method to remove money from the account
     def withdraw(self):
-        amount = float(self.deposit_amount_entry.get())
+        amount_entry = self.deposit_amount_entry.get()
+        if amount_entry:
+            amount = float(amount_entry)
+        else:
+            messagebox.showerror("Erreur de saisie", "Veuillez entrer un montant valide.")
         balance = self.controller.get_balance(self.user_info['id'])
         if amount > balance:
             messagebox.showerror("Solde insuffisant", "Vous n'avez pas assez d'argent sur votre compte.")
@@ -91,5 +108,24 @@ class Menu:
     def update_transaction_text(self):
         self.transaction_text.delete('1.0', tk.END) 
         for transaction in self.transactions:
-            self.transaction_text.insert(tk.END, transaction + "\n")  
+            self.transaction_text.insert(tk.END, transaction + "\n") 
+    
+        
+    def transfer(self):
+      
+        receiver_id = int(self.receiver_id.get())  
+        amount = float(self.amount.get())  
+        
+        success = self.controller.transfer(self.user_info['id'], receiver_id, amount)
+        if success:
+            self.withdraw()
+            self.transaction_text.insert(tk.END, f"Retrait: -{amount} €", "red") 
+            messagebox.showinfo("Virement effectué", f"Vous avez transféré {amount} € au compte {receiver_id}.")
+        else:
+            messagebox.showerror("Échec du virement", "Impossible de traiter le virement. Veuillez vérifier votre solde ou le numéro de compte du destinataire.")
 
+    
+    
+    
+    
+    

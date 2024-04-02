@@ -32,9 +32,7 @@ class SqlManager(Database):
             if ph.verify(user_info[4], password):
                 return {'firstname': user_info[2], 'name': user_info[1], 'id': user_info[0]}
         return None
-
-
-    
+ 
     # add balance to the user
     def add_balance(self, id_user, amount):
         sql = "UPDATE user SET solde = solde + %s WHERE id_user = %s"
@@ -45,3 +43,5 @@ class SqlManager(Database):
         sql = "SELECT solde FROM user WHERE id_user = %s"
         return self.fetch_one(sql, (solde,))
 
+
+    
