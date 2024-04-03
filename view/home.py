@@ -31,10 +31,10 @@ class Home:
             label.pack()
 
         # Bouton d'inscription
-        self.inscription_button = tk.Button(self.root, text="S'inscrire", command=self.go_to_inscription, font=('Arial', 14), bg='#DB0000', fg='red', padx=20, pady=10, bd=0, activebackground='#FF5733', activeforeground='red')
+        self.inscription_button = tk.Button(self.root, text="S'inscrire", command=self.go_to_inscription,  font=('Arial', 14), bg='white', fg='#DB0000', padx=20, pady=10, bd=0, activebackground='#FF5733', activeforeground='white')
         self.inscription_button.pack(pady=10)
 
-        self.connection_button = tk.Button(self.root, text="Se connecter", command=self.go_to_connection, font=('Arial', 14), bg='#DB0000', fg='red', padx=20, pady=10, bd=0, activebackground='#FF5733', activeforeground='red')
+        self.connection_button = tk.Button(self.root, text="Se connecter", command=self.go_to_connection,  font=('Arial', 14), bg='white', fg='#DB0000', padx=20, pady=10, bd=0, activebackground='#FF5733', activeforeground='white')
         self.connection_button.pack(pady=10)
 
     def go_to_inscription(self):

@@ -118,7 +118,10 @@ class Menu:
         
     def transfer(self):
       
-        receiver_id = int(self.receiver_id.get())  
+        receiver_id = int(self.receiver_id.get())
+        if receiver_id == self.user_info['id']:
+            messagebox.showerror("Erreur de saisie", "Vous ne pouvez pas transférer de l'argent à vous-même.")
+            return  
         amount = float(self.amount.get())  
         
         success = self.controller.transfer(self.user_info['id'], receiver_id, amount)
