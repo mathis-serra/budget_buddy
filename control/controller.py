@@ -16,6 +16,8 @@ class Controller:
         else:
             self.model.insert_user(name, firstname, email, password)
             print("Utilisateur enregistré avec succès")
+    
+    
     # login a user
     def login_user(self, email, password):
         user_info = self.model.verify_user(email, password)
@@ -25,16 +27,19 @@ class Controller:
         else:
             print("Connexion échouée")
             return None
+    
+    
     # get the balance of the user
     def get_balance(self, id_user):
         balance = self.model.retrieve_balance(id_user)
         return balance[0] if balance else 0
-    # update the balance of the user
     
+    # update the balance of the user
     def update_balance(self, id_user, amount):
         self.model.add_balance(id_user, amount)
         print("Solde mis à jour")
     
+    # transfer money from one account to another
     def transfer(self, id_user, receiver_id, amount):
         sender_balance = self.model.retrieve_balance(id_user)
         if sender_balance[0] < amount:
