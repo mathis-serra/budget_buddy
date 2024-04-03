@@ -2,9 +2,9 @@
 
 import tkinter as tk
 from tkinter import font
-from control.controller import Controller
-from view.connection import Connection
-from view.placeholderEntry import PlaceholderEntry
+from control.Controller import Controller
+from view.Connection import Connection
+from view.PlaceholderEntry import PlaceholderEntry
 
 
 class Inscription:

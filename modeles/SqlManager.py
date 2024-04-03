@@ -1,6 +1,6 @@
 # sql_manager.py
 
-from modeles.database import Database
+from modeles.Database import Database
 from argon2 import PasswordHasher
 
 
@@ -43,5 +43,15 @@ class SqlManager(Database):
         sql = "SELECT solde FROM user WHERE id_user = %s"
         return self.fetch_one(sql, (solde,))
 
+       
+    
+    def register_transaction(self, reason, type_transaction, amount):
+        sql = "INSERT INTO transaction (reason, type_transaction, amount) VALUES (%s, %s, %s)"
+        self.execute_sql(sql, (reason, type_transaction, amount))
+
 
     
+    def retrieve_transactions(self, type_transaction):
+        sql = "SELECT amount, reason FROM transaction WHERE type_transaction = %s"
+        return self.fetch_all(sql, (type_transaction,))
+

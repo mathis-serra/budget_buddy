@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import font, messagebox
-from control.controller import Controller
+from control.Controller import Controller
 
 class Menu:
     
@@ -66,8 +66,12 @@ class Menu:
         self.transaction_label = tk.Label(self.root, text="Transactions:", font=('Arial', 16, 'bold'), bg='#f5f5f5', fg='black')
         self.transaction_label.pack(pady=10)
 
-        self.transaction_text = tk.Text(self.root, width=40, height=10, font=('Arial', 12))
+        self.transaction_text = tk.Text(self.root, font=('Arial', 12), height=10, width=40)
         self.transaction_text.pack(pady=5)
+        
+        transactions = self.controller.get_transactions(self.user_info['id'])
+        if transactions:
+            self.display_transactions(transactions)
         
 
     #Deposit method to add money to the account
@@ -75,8 +79,8 @@ class Menu:
         #Get the amount to deposit
         amount = float(self.deposit_amount_entry.get())
         self.controller.update_balance(self.user_info['id'], amount)
-        #Add the deposit transaction to the list
-        self.transactions.append(f"Dépôt: +{amount} €")  
+        self.transactions.append(f"Dépôt: +{amount} €") 
+        self.controller.register_transaction( "Dépôt", self.user_info['id'], amount)
         self.update_transaction_text()
         balance = self.controller.get_balance(self.user_info['id'])
         self.account_balance.config(text=f"Solde: {balance} €")
@@ -98,7 +102,8 @@ class Menu:
             self.transactions.append(f"Retrait: -{amount} €")
             self.transaction_text.tag_configure("red", foreground="red")
             #Turn the withdraw transaction text red
-            self.transaction_text.insert(tk.END, f"Retrait: -{amount} €", "red") 
+            self.transaction_text.insert(tk.END, f"Retrait: -{amount} €", "red")
+            self.controller.register_transaction( "Retrait", self.user_info['id'], amount)
             self.update_transaction_text()
             balance = self.controller.get_balance(self.user_info['id'])
             self.account_balance.config(text=f"Solde: {balance} €")
@@ -119,12 +124,19 @@ class Menu:
         success = self.controller.transfer(self.user_info['id'], receiver_id, amount)
         if success:
             self.withdraw()
-            self.transaction_text.insert(tk.END, f"Retrait: -{amount} €", "red") 
+            self.transaction_text.insert(tk.END, f"Retrait: -{amount} €", "red")
+            self.controller.register_transaction( "Virement Sortant", self.user_info['id'], amount)
             messagebox.showinfo("Virement effectué", f"Vous avez transféré {amount} € au compte {receiver_id}.")
         else:
             messagebox.showerror("Échec du virement", "Impossible de traiter le virement. Veuillez vérifier votre solde ou le numéro de compte du destinataire.")
 
     
+    def display_transactions(self, transactions):
+        for transaction in transactions:
+            reason = transaction['reason']
+            amount = transaction['amount']
+            self.transaction_text.insert(tk.END, f"{reason}: {amount} €\n")
+
     
     
     

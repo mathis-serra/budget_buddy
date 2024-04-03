@@ -1,4 +1,4 @@
-from modeles.sql_manager import SqlManager
+from modeles.SqlManager import SqlManager
 
 
 class Controller:
@@ -45,3 +45,12 @@ class Controller:
             self.model.add_balance(receiver_id, amount)  
             print("Virement effectué avec succès.")
             return True
+        
+    # register a transaction
+    def register_transaction(self, reason, type_transaction, amount):
+        self.model.register_transaction( reason, type_transaction, amount)
+        print("Transaction enregistrée avec succès")
+
+    def get_transactions(self, id_user):
+        transactions = self.model.retrieve_transactions(id_user)
+        return [{'reason': row[1], 'amount': row[0]} for row in transactions]

@@ -1,8 +1,6 @@
 # from view.home import Menu
-from control.controller import Controller
 import tkinter as tk
-
-from view.home import Home
+from view.Home import Home
 
 
 if __name__ == "__main__":

@@ -2,8 +2,8 @@ import tkinter as tk
 from tkinter import font
 import subprocess
 from view.Inscription import Inscription
-from view.connection import Connection  # Importe le fichier connexion.py
-from control.controller import Controller
+from view.Connection import Connection  # Importe le fichier connexion.py
+from control.Controller import Controller
 
 class Home:
     def __init__(self, root):

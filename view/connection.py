@@ -1,8 +1,8 @@
 import tkinter as tk
 from tkinter import font, Label, Button, messagebox
-from view.placeholderEntry import PlaceholderEntry
-from control.controller import Controller
-from view.Account import Menu
+from view.PlaceholderEntry import PlaceholderEntry
+from control.Controller import Controller
+from view.Menu import Menu
 
 class Connection:
     def __init__(self, root, controller):

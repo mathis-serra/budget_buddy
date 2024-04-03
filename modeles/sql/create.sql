@@ -17,7 +17,7 @@ CREATE TABLE transaction(
     amount INT,
     heure DATETIME DEFAULT CURRENT_TIMESTAMP,
     reason VARCHAR (255),
-    type_transaction BOOLEAN 
+    type_transaction VARCHAR (255), 
 );
 
 
