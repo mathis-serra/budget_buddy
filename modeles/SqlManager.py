@@ -21,6 +21,7 @@ class SqlManager(Database):
         sql = "INSERT INTO user (name, firstname, email, password, solde) VALUES (%s, %s, %s, %s, 0)"
         self.execute_sql(sql, (name, firstname, email, hashed_password))
     
+    
     # verify the user in the database
     def verify_user(self, email, password):
         ph = PasswordHasher()

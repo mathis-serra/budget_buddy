@@ -19,6 +19,7 @@ class PlaceholderEntry(tk.Entry):
         if self['fg'] == self.placeholder_color:
             self.delete(0, tk.END)
             self['fg'] = self.default_fg_color
+            
 
     def on_focus_out(self, event):
         if not self.get():

@@ -16,6 +16,7 @@ class Menu:
         self.root.title("MazeBank")
         self.root.geometry("430x800")  
         self.root.configure(background='#f5f5f5')
+        
 
         self.logo = tk.PhotoImage(file="assets/logo.png").subsample(3)
         self.logo_label = tk.Label(self.root, image=self.logo, bg='#f5f5f5')

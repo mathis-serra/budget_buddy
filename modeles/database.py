@@ -20,6 +20,7 @@ class Database:
     def fetch_all(self, query, params):
         self.cursor.execute(query, params or ())
         return self.cursor.fetchall()
+    
 
     # Fetch one result
     def fetch_one(self, query, params):

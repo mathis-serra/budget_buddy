@@ -19,6 +19,7 @@ class Home:
         self.custom_font = font.Font(family="Helvetica", size=24, weight="bold")
         self.title_label = tk.Label(self.root, text="MAZE BANK", font=self.custom_font, bg='#f5f5f5', fg='black')
         self.title_label.pack()
+        
 
         # home Message 
         message_lines = [

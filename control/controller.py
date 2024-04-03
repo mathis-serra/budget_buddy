@@ -18,6 +18,7 @@ class Controller:
             print("Utilisateur enregistré avec succès")
     
     
+    
     # login a user
     def login_user(self, email, password):
         user_info = self.model.verify_user(email, password)

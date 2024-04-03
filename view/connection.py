@@ -22,6 +22,7 @@ class Connection:
         self.title_label = tk.Label(self.root, text="MAZE BANK", font=('Helvetica', 24, 'bold'), bg='#f5f5f5', fg='black')
         self.title_label.pack()
 
+
         # Zone de connexion
         self.connexion_title = Label(self.root, text="Connexion", font=('Arial', 18, 'bold'), bg='#f5f5f5', fg='#DB0000')
         self.connexion_title.pack(pady=10)

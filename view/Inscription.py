@@ -18,6 +18,7 @@ class Inscription:
         self.root.title("MazeBank - Inscription")
         self.root.geometry("430x800")  
         self.root.configure(background='#f5f5f5')
+        
 
     
         self.logo = tk.PhotoImage(file="assets/logo.png").subsample(2)  
